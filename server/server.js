@@ -18,6 +18,12 @@ app.use(require('./routes/auth'))
 
 const PORT = process.env.PORT;
 
+//Added for deployment
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //Server is listening to the port. 
 app.listen(PORT, () => {
